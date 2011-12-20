@@ -1,0 +1,8 @@
+#!/usr/bin/env jruby
+calbom_home = ENV['CALBOM_HOME'] || '/usr/local/share/calbom'
+$: << calbom_home + '/lib'
+$: << './lib'
+$: << '../lib'
+
+require 'calbom'
+Calbom.run

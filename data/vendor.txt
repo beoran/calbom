@@ -1,0 +1,2 @@
+vendor_1 | Test Vendor 1  | The First Test Vendor    | 2011-12-20 20:13
+vendor_2 | Test Vendor 2  | The Second Test Vendor   | 2011-12-20 20:15
