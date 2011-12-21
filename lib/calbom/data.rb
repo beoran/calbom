@@ -1,5 +1,5 @@
 # Ultra simplistic data storage in pipe delimited text files.
-
+=begin
 module Calbom
   class Data
     def initialize(name, fields={})
@@ -24,7 +24,7 @@ module Calbom
     
   end
 end  
-  
+=end  
 
 
 

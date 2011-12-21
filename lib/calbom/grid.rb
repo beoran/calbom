@@ -1,11 +1,9 @@
+=begin
 require 'java'
 require 'open-uri'
 require 'rss'
 
 # include_class "org.eclipse.swt.SWT"
-include_package 'org.eclipse.swt'
-include_package 'org.eclipse.swt.layout'
-include_package 'org.eclipse.swt.widgets'
 
 # # Neat little trick to include several classes from the same package.
 # %w(Display Shell Label Table TableColumn TableItem Button).each do
@@ -79,3 +77,4 @@ module Calbom
 end
 
 RssViewer.new.show
+=end

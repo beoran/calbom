@@ -7,12 +7,12 @@ configuration do |c|
 	# Undocumented option 'output_dir'
 	# default value: "package"
 	#
-	#c.output_dir = "package"
+	c.output_dir = "pkg"
 
 	# The main ruby file to invoke, minus the .rb extension
 	# default value: "main"
 	#
-	#c.main_ruby_file = "main"
+	c.main_ruby_file = "lib/calbom/main"
 
 	# The fully-qualified name of the main Java file used to initiate the application.
 	# default value: "org.rubyforge.rawr.Main"
@@ -22,12 +22,12 @@ configuration do |c|
 	# A list of directories where source files reside
 	# default value: ["src"]
 	#
-	#c.source_dirs = ["src"]
+	c.source_dirs = ["lib", "src"]
 
 	# A list of regexps of files to exclude
 	# default value: []
 	#
-	#c.source_exclude_filter = []
+	# c.source_exclude_filter = [/.*\.jar/]
 
 	# Whether Ruby source files should be compiled into .class files
 	# default value: true
@@ -37,7 +37,7 @@ configuration do |c|
 	# A list of individual Java library files to include.
 	# default value: []
 	#
-	#c.java_lib_files = []
+	c.java_lib_files = ["lib"]
 
 	# A list of directories for rawr to include . All files in the given directories get bundled up.
 	# default value: ["lib/java"]

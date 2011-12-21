@@ -21,9 +21,37 @@ module Calbom
         p args[0].methods - Object.methods
         @button.setText("Thank You!")
       end
-      @shell.pack
+      
+      @bar      = MenuBar.new(@shell)
+      # @bar.submenu('&File')
+      @bar.item('&File', '&Save', 'S', :mod1) do
+        puts "Should Save!"
+      end
+      @bar.item('&File', '&Open', 'O', :mod1) do
+        puts "Should Open!"
+      end
+      @bar.item('&Help', '&How To Use', 'F1', :none) do
+        puts "Should Show help!"
+      end
+      @bar.item('&Help', '&About', 'A', :mod1) do
+        puts "Should About!"        
+      end
+      
+#       @shell.setMenuBar(@bar)
+#       @fileitem = MenuItem.new(@bar, SWT::CASCADE)
+#       @fileitem.setText("&File");
+#       @submenu  = Menu.new(@shell, SWT::DROP_DOWN);
+#       @fileitem.setMenu(@submenu);
+#       @item     = MenuItem.new(@submenu, SWT::PUSH);
+#       @item.setText("&Save\tCtrl+S");
+#       @item.setAccelerator( "A".ord + SWT::MOD1);
+#       @item.addSelectionListener do
+#         puts "Should Save!"
+#       end
+      # @shell.pack
     end
 
+    
     def run
       @shell.open
       while (!@shell.isDisposed) do
@@ -32,4 +60,10 @@ module Calbom
       @display.dispose
     end    
   end
-end  
+end
+
+
+if __FILE__ == $0
+  Calbom::Main.run
+end
+

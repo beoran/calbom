@@ -6,7 +6,7 @@ require 'java'
 
 include_class "org.eclipse.swt.SWT"
 # Neat little trick to include several classes from the same package.
-%w(Display Shell Label Table TableColumn TableItem).each do
+%w(Display Shell Label Table TableColumn TableItem Menu MenuItem).each do
     |c|
     include_class "org.eclipse.swt.widgets." + c
 end
@@ -22,8 +22,10 @@ module Calbom
   include_package 'org.eclipse.swt.widgets'
   swt = org.eclipse.swt
 
-  autoload :Grid, 'calbom/grid'
-  autoload :Main, 'calbom/main' 
+  autoload :Grid    , 'calbom/grid'
+  autoload :Main    , 'calbom/main'
+  autoload :MenuBar , 'calbom/menubar'
+  autoload :Ui      , 'calbom/ui'
 
 	def self.run
 	  puts "Starting Calbom!"
