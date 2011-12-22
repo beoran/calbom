@@ -2,40 +2,41 @@
 
 module Calbom
   module Ui
+    include_package 'org.eclipse.swt'
+    include_package 'org.eclipse.swt.layout'
+    include_package 'org.eclipse.swt.widgets'
 
-    # 
-    def message
+
+    # translates symbols to SWT integer constants
+    # by looking them up in the ZWT clkas after uppercasing them
+    def self.sym_to_swt(sym)      
+      return SWT.const_get(sym.to_s.upcase.to_sym)
+    end
+
+    # ors the styles together after looking them up
+    def self.or_styles(*styles)
+      res = 0
+      for style in styles do
+        aid = sym_to_swt(style)
+        res |= aid
+      end  
+      return res      
+    end
     
-        ICON_ERROR, ICON_INFORMATION, ICON_QUESTION, ICON_WARNING, ICON_WORKING
-    OK, OK | CANCEL
-    YES | NO, YES | NO | CANCEL
-    RETRY | CANCEL
-    ABORT | RETRY | IGNORE
-Events:
-    (none)
+    # Creates a message box.
+    def self.make_messagebox(shell, message = "", *styles)
+      style = or_styles(*styles)
+      box   = MessageBox.new(shell, style)
+      box.setMessage(message) if message 
+      return box
+    end
 
-Note: Only one of the styles ICON_ERROR, ICON_INFORMATION, ICON_QUESTION, ICON_WARNING and ICON_WORKING may be specified.
-
-IMPORTANT: This class is not intended to be subclassed.
-
-See Also:
-    SWT Example: ControlExample, Dialog tab, Sample code and further information
-Restriction:
-    This class is not intended to be subclassed by clients.
-
-Constructor Summary
-MessageBox(Shell parent)
-          Constructs a new instance of this class given only its parent.
-MessageBox(Shell parent, int style)
-          Constructs a new instance of this class given its parent and a style value describing its behavior and appearance.
-
-Method Summary
- String   getMessage()
-          Returns the dialog's message, or an empty string if it does not have one.
- int  open()
-          Makes the dialog visible and brings it to the front of the display.
- void   setMessage(String string)
-          Sets the dialog's message, which is a description of the purpose for which it was opened.
+    # Creates a message box and opens it.
+    def self.messagebox(shell, message = "", *styles)
+      box = make_messagebox(shell, message, *styles)
+      return box.open()
+    end
+    
   end
 end
 

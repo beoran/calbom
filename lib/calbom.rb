@@ -20,6 +20,7 @@ module Calbom
   include_package 'org.eclipse.swt'
   include_package 'org.eclipse.swt.layout'
   include_package 'org.eclipse.swt.widgets'
+  
   swt = org.eclipse.swt
 
   autoload :Grid    , 'calbom/grid'

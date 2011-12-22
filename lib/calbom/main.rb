@@ -1,5 +1,7 @@
 module Calbom
   class Main
+    ABOUT_TEXT = "Copyright Beoran 2011. May be distributed under the zlib license."
+  
     def initialize
       @display = Display.new
       @shell  = Shell.new(display)
@@ -30,10 +32,16 @@ module Calbom
       @bar.item('&File', '&Open', 'O', :mod1) do
         puts "Should Open!"
       end
+      
       @bar.item('&Help', '&How To Use', 'F1', :none) do
+        res = Ui.messagebox(@shell, "This will be some short help.",
+                            :icon_information, :ok)
         puts "Should Show help!"
       end
       @bar.item('&Help', '&About', 'A', :mod1) do
+        res = Ui.messagebox(@shell, ABOUT_TEXT,
+                            :icon_information, :ok)
+      
         puts "Should About!"        
       end
       
